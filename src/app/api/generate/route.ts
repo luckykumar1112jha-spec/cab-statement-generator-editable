@@ -132,6 +132,17 @@ export async function POST(req: NextRequest) {
           }
         }
 
+            // ===============================
+            // Mark negative values
+            // ===============================
+
+            Object.keys(cleanData).forEach((key) => {
+              const value = Number(cleanData[key]);
+
+              cleanData[`${key}_CLASS`] =
+                !isNaN(value) && value < 0 ? "negative" : "";
+            });
+
         const html = await renderTemplate(type, cleanData);
         
         const cabNo = cleanData['Cab No'] || 'unknown';
