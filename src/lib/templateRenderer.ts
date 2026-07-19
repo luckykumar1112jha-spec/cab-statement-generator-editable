@@ -237,7 +237,9 @@ export const renderTemplate = async (type: 'TYPE_A' | 'TYPE_B', sanitizedData: a
   const templateName = type === 'TYPE_A' ? 'typeA' : 'typeB';
   const templatePath = path.join(CONFIG.TEMPLATE_DIR, `${templateName}.html`);
   const templateSource = await fs.readFile(templatePath, 'utf-8');
-  const template = Handlebars.compile(templateSource);
+  const template = Handlebars.compile(templateSource, {
+  noEscape: true,
+});
   
   
   sanitizedData.finalAmountClass =

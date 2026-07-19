@@ -148,9 +148,13 @@
                         <tr style="background: #e5e7eb; font-weight: bold;">
                             <td style="text-align: left;">TOTAL CAMPUS / SUM</td>
                             <td>{{[74-A Amex Trips]}}</td>
-                            <td>{{[74-A Company Amount]}}</td>
+                            <td class="{{campusTotalAmtClass}}">
+                                {{[74-A Company Amount]}}
+                            </td>
                             <td>{{CyberCity_Sum_Trip}}</td>
-                            <td>{{CyberCity_Sum_Amt}}</td>
+                            <td class="{{cyberTotalAmtClass}}">
+                                {{CyberCity_Sum_Amt}}
+                            </td>
                         </tr>
                         <tr>
                             <td style="text-align: left;">Per Trips Extra Amt. (GGN)</td>
@@ -177,10 +181,14 @@
                             <td style="text-align:left;">TOTAL</td>
 
                             <td>{{Campus_Extra_Trip_Total}}</td>
-                            <td>{{Campus_Extra_Amt_Total}}</td>
+                            <td class="{{campusExtraAmtClass}}">
+                                {{Campus_Extra_Amt_Total}}
+                            </td>
 
                             <td>{{Cyber_Extra_Trip_Total}}</td>
-                            <td>{{Cyber_Extra_Amt_Total}}</td>
+                            <td class="{{cyberExtraAmtClass}}">
+                                {{Cyber_Extra_Amt_Total}}
+                            </td>
                         </tr>
                         
                     </tbody>
@@ -207,7 +215,7 @@
                     <div class="data-row"><span class="data-label">Fastag Amt:</span> <span class="data-value">{{[Fastag Amt]}}</span></div>
                     <div class="data-row"><span class="data-label">Gross Amount:</span> <span class="data-value">{{[Total Amount]}}</span></div>
                     <div class="data-row"><span class="data-label">TDS 1%:</span> <span class="data-value">{{[TDS 1%]}}</span></div>
-                    <div class="data-row" style="background:#ffff00; font-weight:bold;"><span class="data-label">Total Amount</span> <span class="data-value">{{[Total Amount After TDS]}}</span></div>
+                    <div class="data-row" style="background:#ffff00; font-weight:bold;"><span class="data-label">Total Amount</span> <span class="data-value {{totalAfterTdsClass}}"> {{[Total Amount After TDS]}}</span></div>
                 </div>
             </div>
 
@@ -236,8 +244,8 @@
                     <div class="data-row"><span class="data-label">HR TAX:</span> <span class="data-value">{{[HR TAX]}}</span></div>
                     <div class="data-row"><span class="data-label">MCD/Tax Recovery:</span> <span class="data-value">{{[MCD_Tax_Recovery]}}</span></div>
                     <div class="data-row" style="background:#eee;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
-                    <div class="data-row"><span class="data-label">Gross Total:</span> <span class="data-value">{{[Gross Amount]}}</span></div>
-                    <div class="data-row"><span class="data-label">Prev. Minus/plus:</span> <span class="data-value">{{[Previous Minus/plus]}}</span></div>
+                    <div class="data-row"><span class="data-label">Gross Total:</span> <span class="data-value {{grossAmountClass}}"> {{[Gross Amount]}} </span></div>
+                    <div class="data-row"><span class="data-label">Prev. Minus/plus:</span> <span class="data-value {{previousMinusClass}}"> {{[Previous Minus/plus]}} </span></div>
                     <div class="data-row" style="background:#ffff00; font-weight:bold; font-size:15px;">
                         <span class="data-label">FINAL AMOUNT:</span>
                         <span class="data-value {{finalAmountClass}}">
@@ -257,10 +265,10 @@
             <div class="panel-title">Bank Details</div>
             <div class="data-list" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #000;">
                 <div class="data-row"><span class="data-label">A/C Name:</span> <span class="data-value">{{[Account Name]}}</span></div>
-                <div class="data-row"><span class="data-label">Pan Number:</span> <span class="data-value">{{[Pan Number]}}</span></div>
-                <div class="data-row"><span class="data-label">IFSC Code:</span> <span class="data-value">{{[IFSC Code]}}</span></div>
                 <div class="data-row"><span class="data-label">Pan Name:</span> <span class="data-value">{{[Pan Name]}}</span></div>
                 <div class="data-row"><span class="data-label">A/c Number:</span> <span class="data-value">{{[Account Number]}}</span></div>
+                <div class="data-row"><span class="data-label">Pan Number:</span> <span class="data-value">{{[Pan Number]}}</span></div>
+                <div class="data-row"><span class="data-label">IFSC Code:</span> <span class="data-value">{{[IFSC Code]}}</span></div>
                 <div class="data-row"><span class="data-label">Father Name:</span> <span class="data-value">{{[Father Name]}}</span></div>
             </div>
         </div>

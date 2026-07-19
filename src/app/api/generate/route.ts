@@ -133,15 +133,32 @@ export async function POST(req: NextRequest) {
         }
 
             // ===============================
-            // Mark negative values
+            // Highlight Important Negative Values
             // ===============================
 
-            Object.keys(cleanData).forEach((key) => {
-              const value = Number(cleanData[key]);
+            cleanData.totalAfterTdsClass =
+              Number(cleanData["Total Amount After TDS"] || 0) < 0 ? "negative" : "";
 
-              cleanData[`${key}_CLASS`] =
-                !isNaN(value) && value < 0 ? "negative" : "";
-            });
+            cleanData.grossAmountClass =
+              Number(cleanData["Gross Amount"] || 0) < 0 ? "negative" : "";
+
+            cleanData.previousMinusClass =
+              Number(cleanData["Previous Minus/plus"] || 0) < 0 ? "negative" : "";
+
+            cleanData.finalAmountClass =
+              Number(cleanData["FINAL AMOUNT"] || 0) < 0 ? "negative" : "";
+
+            cleanData.campusTotalAmtClass =
+              Number(cleanData["74-A Company Amount"] || 0) < 0 ? "negative" : "";
+
+            cleanData.cyberTotalAmtClass =
+              Number(cleanData.CyberCity_Sum_Amt || 0) < 0 ? "negative" : "";
+
+            cleanData.campusExtraAmtClass =
+              Number(cleanData.Campus_Extra_Amt_Total || 0) < 0 ? "negative" : "";
+
+            cleanData.cyberExtraAmtClass =
+              Number(cleanData.Cyber_Extra_Amt_Total || 0) < 0 ? "negative" : "";
 
         const html = await renderTemplate(type, cleanData);
         
