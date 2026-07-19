@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            font-family:'Arial','Noto Sans Devanagari',sans-serif;
+            margin:0;
+            padding:10px;
+            color:#000;
+            font-size:11px;
+            line-height:1.2;
+        }
+        .header { text-align: center; margin-bottom: 8px; border-bottom: 3px solid #000; padding-bottom: 10px; }
+        .header h1 { margin: 0; font-size: 22px; letter-spacing: 2px; }
+        .top-info { display: flex; justify-content: space-between; margin-bottom: 10px; font-weight: bold; font-size: 12px; background: #f9f9f9; padding: 6px; border: 1px solid #ddd; }
+        
+        /* Main layout container organizing route details & payment on left, expenses on right */
+        .main-layout { display: flex; gap: 10px; align-items: flex-start; }
+        .left-column { flex: 2.2; display: flex; flex-direction: column; gap: 20px; }
+        .right-column { flex: 1; }
+        
+        .panel { border: 1px solid #000; margin-bottom: 10px; }
+        .panel:last-child { margin-bottom: 0; }
+        .panel-title { background: #333; color: #fff; padding: 4px; font-weight: bold; text-transform: uppercase; text-align: center; font-size: 11px; }
+        
+        .data-list { list-style: none; padding: 0; margin: 0; }
+        .data-row { display: flex; justify-content: space-between; padding: 3px 6px; border-bottom: 1px solid #eee; font-size: 10px;}
+        .data-row:last-child { border-bottom: none; }
+        .data-label { font-weight: normal; color: #444; }
+        .data-value { font-weight: bold; text-align: right; }
+        
+        .table { width: 100%; border-collapse: collapse; margin: 0; }
+        .table th, .table td { border: 1px solid #000; padding: 3px; text-align: center; font-size: 10px; }
+        .table th { background: #f2f2f2; font-weight: bold; }
+        .highlight { background-color: #ffff00; padding: 2px 5px; }
+        .negative { color: red !important; font-weight: bold; }
+        
+        .page-break {margin-top:12px; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>INVOICE</h1>
+    </div>
+
+    <div class="top-info">
+        <div>Month: {{Month}}</div>
+        <div>Vehicle Type: {{[Cab Type]}}</div>
+        <div>Cab No: {{[Cab No]}}</div>
+    </div>
+
+    <!-- Main Side-by-Side Dashboard Container -->
+    <div class="main-layout">
+        
+        <!-- Left Side: Route Tables & Slim Payment Summary -->
+        <div class="left-column">
+            
+            <!-- Combined Route Details Table -->
+            <div class="panel">
+                <div class="panel-title">Route Trip & Amount Details</div>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" style="vertical-align: middle;">Route</th>
+                            <th colspan="2">Campus (74-A) Details</th>
+                            <th colspan="2">CyberCity Details</th>
+                        </tr>
+                        <tr>
+                            <th>Trip</th>
+                            <th>Amt.</th>
+                            <th>Trip</th>
+                            <th>Amt.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">DLI (FRONT)</td>
+                            <td>{{C_DLI_FRONT_TRIP}}</td>
+                            <td>{{C_DLI_FRONT_AMT}}</td>
+                            <td>{{DLI_FRONT_TRIP}}</td>
+                            <td>{{DLI_FRONT_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">DLI (B2B)</td>
+                            <td>{{C_DLI_B2B_TRIP}}</td>
+                            <td>{{C_DLI_B2B_AMT}}</td>
+                            <td>{{DLI_B2B_TRIP}}</td>
+                            <td>{{DLI_B2B_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">FBD (FRONT)</td>
+                            <td>{{C_FBD_FRONT_TRIP}}</td>
+                            <td>{{C_FBD_FRONT_AMT}}</td>
+                            <td>{{FBD_FRONT_TRIP}}</td>
+                            <td>{{FBD_FRONT_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">FBD (B2B)</td>
+                            <td>{{C_FBD_B2B_TRIP}}</td>
+                            <td>{{C_FBD_B2B_AMT}}</td>
+                            <td>{{FBD_B2B_TRIP}}</td>
+                            <td>{{FBD_B2B_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">GGN (FRONT)</td>
+                            <td>{{C_GGN_FRONT_TRIP}}</td>
+                            <td>{{C_GGN_FRONT_AMT}}</td>
+                            <td>{{GGN_FRONT_TRIP}}</td>
+                            <td>{{GGN_FRONT_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">GGN (B2B)</td>
+                            <td>{{C_GGN_B2B_TRIP}}</td>
+                            <td>{{C_GGN_B2B_AMT}}</td>
+                            <td>{{GGN_B2B_TRIP}}</td>
+                            <td>{{GGN_B2B_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">NOIDA (FRONT)</td>
+                            <td>{{C_NOIDA_FRONT_TRIP}}</td>
+                            <td>{{C_NOIDA_FRONT_AMT}}</td>
+                            <td>{{NOIDA_FRONT_TRIP}}</td>
+                            <td>{{NOIDA_FRONT_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">NOIDA (B2B)</td>
+                            <td>{{C_NOIDA_B2B_TRIP}}</td>
+                            <td>{{C_NOIDA_B2B_AMT}}</td>
+                            <td>{{NOIDA_B2B_TRIP}}</td>
+                            <td>{{NOIDA_B2B_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">GZB (FRONT)</td>
+                            <td>{{C_GZB_FRONT_TRIP}}</td>
+                            <td>{{C_GZB_FRONT_AMT}}</td>
+                            <td>{{GZB_FRONT_TRIP}}</td>
+                            <td>{{GZB_FRONT_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="font-weight: bold; text-align: left;">GZB (B2B)</td>
+                            <td>{{C_GZB_B2B_TRIP}}</td>
+                            <td>{{C_GZB_B2B_AMT}}</td>
+                            <td>{{GZB_B2B_TRIP}}</td>
+                            <td>{{GZB_B2B_AMT}}</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Per Trips Extra Amt. (GGN)</td>
+                            <td>{{C_EXTRA_GGN_TRIP}}</td>
+                            <td>{{C_EXTRA_GGN_AMT}}</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">Extra (DLI/FBD/GZB)</td>
+                            <td>{{C_EXTRA_DLI_FBD_GZB_TRIP}}</td>
+                            <td>{{C_EXTRA_DLI_FBD_GZB_AMT}}</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: left;">GUARD</td>
+                            <td>{{C_GUARD_TRIP}}</td>
+                            <td>{{C_GUARD_AMT}}</td>
+                            <td>{{G_T}}</td>
+                            <td>{{GTM}}</td>
+                        </tr>
+                        <!-- Combined Summary Row -->
+                        <tr style="background: #e5e7eb; font-weight: bold;">
+                            <td style="text-align: left;">TOTAL CAMPUS / SUM</td>
+                            <td>{{[74-A Amex Trips]}}</td>
+                            <td>{{[74-A Company Amount]}}</td>
+                            <td>{{CyberCity_Sum_Trip}}</td>
+                            <td>{{CyberCity_Sum_Amt}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Cleaned Payment Summary Panel -->
+            <div class="panel">
+                <div class="panel-title">Payment Summary</div>
+                <div class="data-list">
+                    <div class="data-row"><span class="data-label">SHUTTLE CAB AMT:</span> <span class="data-value">{{[SHUTTLE CAB AMT]}}</span></div>
+                    <div class="data-row"><span class="data-label">Amex Amount:</span> <span class="data-value">{{[Amex Amount]}}</span></div>
+
+                    <div class="data-row">
+                        <span class="data-label">Jaquar Pymt:</span>
+                        <span class="data-value">{{[Jaquar Pymt]}}</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">Hartron:</span>
+                        <span class="data-value">{{Hartron}}</span>
+                    </div>
+
+                    <div class="data-row"><span class="data-label">Fastag Amt:</span> <span class="data-value">{{[Fastag Amt]}}</span></div>
+                    <div class="data-row"><span class="data-label">Gross Amount:</span> <span class="data-value">{{[Total Amount]}}</span></div>
+                    <div class="data-row"><span class="data-label">TDS 1%:</span> <span class="data-value">{{[TDS 1%]}}</span></div>
+                    <div class="data-row" style="background:#ffff00; font-weight:bold;"><span class="data-label">Total Amount</span> <span class="data-value">{{[Total Amount After TDS]}}</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right Side: Expenses Panel remains persistent side-by-side -->
+        <div class="right-column">
+            <div class="panel">
+                <div class="panel-title">Expenses</div>
+                <div class="data-list">
+                    <div class="data-row"><span class="data-label">Installment:</span> <span class="data-value">{{Installment}}</span></div>
+                    <div class="data-row"><span class="data-label">NO OF INSTALLMENT:</span> <span class="data-value">{{[NO OF INSTALLMENT]}}</span></div>
+                    <div class="data-row"><span class="data-label">PETROL/CNG:</span> <span class="data-value">{{[PETROL/CNG]}}</span></div>
+                    <div class="data-row"><span class="data-label">PENALTY:</span> <span class="data-value">{{Penalty}}</span></div>
+                    <div class="data-row"><span class="data-label">INSURANCE:</span> <span class="data-value">{{INSURANCE}}</span></div>
+                    <div class="data-row"><span class="data-label">CASH:</span> <span class="data-value">{{CASH}}</span></div>
+                    <div class="data-row"><span class="data-label">A/C PAY:</span> <span class="data-value">{{[A/C PAY]}}</span></div>
+                    <div class="data-row"><span class="data-label">CNG-CARD:</span> <span class="data-value">{{[CNG-CARD]}}</span></div>
+                    <div class="data-row"><span class="data-label">DOWN PYMT:</span> <span class="data-value">{{[DOWN PYMT]}}</span></div>
+                    <div class="data-row"><span class="data-label">(ESI-PF):</span> <span class="data-value">{{[ESI-PF]}}</span></div>
+                    <div class="data-row"><span class="data-label">Driver Salary:</span> <span class="data-value">{{[Driver Salary]}}</span></div>
+                    <div class="data-row"><span class="data-label">Driver Name:</span> <span class="data-value">{{[DRIVER NAME]}}</span></div>
+                    <div class="data-row"><span class="data-label">Maitenance:</span> <span class="data-value">{{Maitenance}}</span></div>
+                    <div class="data-row"><span class="data-label">Complance:</span> <span class="data-value">{{Complance}}</span></div>
+                    <div class="data-row"><span class="data-label">GPS Rent:</span> <span class="data-value">{{[GPS Rent]}}</span></div>
+                    <div class="data-row"><span class="data-label">HR TAX:</span> <span class="data-value">{{[HR TAX]}}</span></div>
+                    <div class="data-row"><span class="data-label">MCD/Tax Recovery:</span> <span class="data-value">{{[MCD_Tax_Recovery]}}</span></div>
+                    <div class="data-row" style="background:#eee;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
+                    <div class="data-row"><span class="data-label">Gross Total:</span> <span class="data-value">{{[Gross Amount]}}</span></div>
+                    <div class="data-row"><span class="data-label">Prev. Minus/plus:</span> <span class="data-value">{{[Previous Minus/plus]}}</span></div>
+                    <div class="data-row" style="background:#ffff00; font-weight:bold; font-size:15px;">
+                        <span class="data-label">FINAL AMOUNT:</span>
+                        <span class="data-value {{finalAmountClass}}">
+                            {{[FINAL AMOUNT]}}
+                        </span>
+                    </div>
+                    <div class="data-row"><span class="data-label">Owner Name:</span> <span class="data-value">{{Name}}</span></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Metadata / Bank / Remarks Section (Pushes nicely below or onto next page contextually) -->
+    <div style="margin-top:12px;">
+        <div class="panel">
+            <div class="panel-title">Bank Details</div>
+            <div class="data-list" style="display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid #000;">
+                <div class="data-row"><span class="data-label">A/C Name:</span> <span class="data-value">{{[Account Name]}}</span></div>
+                <div class="data-row"><span class="data-label">A/c Number:</span> <span class="data-value">{{[Account Number]}}</span></div>
+                <div class="data-row"><span class="data-label">IFSC Code:</span> <span class="data-value">{{[IFSC Code]}}</span></div>
+                <div class="data-row"><span class="data-label">Pan Name:</span> <span class="data-value">{{[Pan Name]}}</span></div>
+                <div class="data-row"><span class="data-label">Pan Number:</span> <span class="data-value">{{[Pan Number]}}</span></div>
+                <div class="data-row"><span class="data-label">Father Name:</span> <span class="data-value">{{[Father Name]}}</span></div>
+            </div>
+        </div>
+
+        {{#if remarksEn}}
+        <div style="margin-top: 20px; padding: 10px; border: 1px dashed #666; background: #f0f7ff; font-size: 13px;">
+            <strong style="text-transform: uppercase; color: #1e40af;">Remarks (English):</strong> {{remarksEn}}
+        </div>
+        {{/if}}
+
+        {{#if remarksHi}}
+        <div style="margin-top: 10px; padding: 10px; border: 1px dashed #666; background: #fff7ed; font-size: 13px; font-family: 'Noto Sans Devanagari', sans-serif;">
+            <strong style="color:#9a3412;">टिप्पणियाँ:</strong> {{remarksHi}}
+        </div>
+        {{/if}}
+    </div>
+</body>
+</html>

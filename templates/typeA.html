@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Arial', 'Noto Sans Devanagari', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            color: #000; 
+            font-size: 14px; /* Increased font size */
+            line-height: 1.5;
+        }
+        .header { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            border-bottom: 3px solid #000; 
+            padding-bottom: 10px;
+        }
+        .header h1 { 
+            margin: 0; 
+            font-size: 28px; 
+            letter-spacing: 2px;
+        }
+        
+        
+        
+        .top-info { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 20px; 
+            font-weight: bold; 
+            font-size: 16px;
+            background: #f9f9f9;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+        
+        .two-panel-container {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+        
+        .panel {
+            flex: 1;
+            border: 1px solid #000;
+        }
+        
+        .panel-title {
+            background: #333;
+            color: #fff;
+            padding: 8px 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 15px;
+        }
+        
+        .data-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .data-row:last-child {
+            border-bottom: none;
+        }
+        
+        .data-label {
+            font-weight: normal;
+            color: #444;
+        }
+        
+        .data-value {
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        .highlight {
+            background-color: #ffff00;
+            padding: 2px 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .footer { 
+            margin-top: 40px; 
+            display: flex; 
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+        
+        .signature-box {
+            border-top: 2px solid #000;
+            width: 200px;
+            text-align: center;
+            padding-top: 5px;
+            font-weight: bold;
+        }
+        
+        .owner-section {
+            margin-top: 20px;
+            padding: 15px;
+            border: 2px solid #000;
+            background: #f0f0f0;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .negative {
+            color: red !important;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>INVOICE</h1>
+    </div>
+
+    <div class="top-info">
+        <div>Month: {{Month}}</div>
+        <div>Cab No: {{[Cab No]}}</div>
+        <div>S No: {{[S No]}}</div>
+    </div>
+
+    <div class="two-panel-container">
+        <!-- LEFT PANEL: GENERAL DETAILS -->
+        <div class="panel">
+            <div class="panel-title">General Details</div>
+            <div class="data-list">
+                <div class="data-row"><span class="data-label">1. S No:</span> <span class="data-value">{{[S No]}}</span></div>
+                <div class="data-row"><span class="data-label">2. FIX/Trip:</span> <span class="data-value">{{[FIX/Trip]}}</span></div>
+                <div class="data-row"><span class="data-label">3. Route Name:</span> <span class="data-value">{{[Route Name]}}</span></div>
+                <div class="data-row"><span class="data-label">4. Vehicle Type:</span> <span class="data-value">{{[Ertiga/Dzire/Tempo]}}</span></div>
+                <div class="data-row"><span class="data-label">5. Fix Price:</span> <span class="data-value">{{[Fix Price]}}</span></div>
+                <div class="data-row"><span class="data-label">6. Trip Amount:</span> <span class="data-value">{{[Trip Amount]}}</span></div>
+                <div class="data-row"><span class="data-label">7. HR TAX:</span> <span class="data-value">{{[HR TAX]}}</span></div>
+                <div class="data-row"><span class="data-label">8. MCD /othar paid:</span> <span class="data-value">{{[MCD /othar paid]}}</span></div>
+                <div class="data-row"><span class="data-label">9. Total Trip:</span> <span class="data-value">{{[Total Trip]}}</span></div>
+                <div class="data-row"><span class="data-label">10. Amount:</span> <span class="data-value">{{Amount}}</span></div>
+                <div class="data-row"><span class="data-label">11. Taxi Duty Amt:</span> <span class="data-value">{{[Add Taxi Duty Amt.]}}</span></div>
+                <div class="data-row"><span class="data-label">12. G. Total:</span> <span class="data-value">{{[G. Total]}}</span></div>
+                <div class="data-row"><span class="data-label">13. 1% TDS:</span> <span class="data-value">{{[1% TDS]}}</span></div>
+                <div class="data-row" style="background:#f2f2f2;"><span class="data-label" style="font-weight:bold;">14. Total Amount:</span> <span class="data-value highlight">{{[Total Amount]}}</span></div>
+            </div>
+        </div>
+
+        <!-- RIGHT PANEL: EXPENSE DETAILS -->
+        <div class="panel">
+            <div class="panel-title">Expense Details</div>
+            <div class="data-list">
+                <div class="data-row"><span class="data-label">15. EMI AMOUNT:</span> <span class="data-value">{{[EMI AMOUNT]}}</span></div>
+                <div class="data-row"><span class="data-label">16. EMI NUMBER:</span> <span class="data-value">{{[EMI NUMBER]}}</span></div>
+                <div class="data-row"><span class="data-label">17. Insurance:</span> <span class="data-value">{{Insurance}}</span></div>
+                <div class="data-row"><span class="data-label">18. Cash:</span> <span class="data-value">{{Cash}}</span></div>
+                <div class="data-row"><span class="data-label">19. A/C PAY:</span> <span class="data-value">{{[A/C PAY]}}</span></div>
+                <div class="data-row"><span class="data-label">20. Ac/C/Card:</span> <span class="data-value">{{[Ac/C/Card]}}</span></div>
+                <div class="data-row"><span class="data-label">21. PETROL/CNG:</span> <span class="data-value">{{[PETROL/CNG]}}</span></div>
+                <div class="data-row"><span class="data-label">22. Maintenance:</span> <span class="data-value">{{Maintenance}}</span></div>
+                <div class="data-row"><span class="data-label">23. Complance:</span> <span class="data-value">{{Complance}}</span></div>
+                <div class="data-row"><span class="data-label">24. ESI/PF:</span> <span class="data-value">{{[ESI/PF]}}</span></div>
+                <div class="data-row"><span class="data-label">25. Salary:</span> <span class="data-value">{{Salary}}</span></div>
+                <div class="data-row"><span class="data-label">26. Driver:</span> <span class="data-value">{{Driver}}</span></div>
+                <div class="data-row"><span class="data-label">27. HR/Taxi Others:</span> <span class="data-value">{{[HR Tax/Taxi Others]}}</span></div>
+                <div class="data-row"><span class="data-label">28. GPS Charge:</span> <span class="data-value">{{[GPS Charge]}}</span></div>
+                <div class="data-row"><span class="data-label">29. Down Pymt:</span> <span class="data-value">{{[Down Pymt]}}</span></div>
+                <div class="data-row" style="background:#f2f2f2;"><span class="data-label" style="font-weight:bold;">30. Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
+                <div class="data-row"><span class="data-label">31. G,Total:</span> <span class="data-value">{{[G,Total]}}</span></div>
+                <div class="data-row"><span class="data-label">32. Previous Minus:</span> <span class="data-value">{{[Previous Minus]}}</span></div>
+                <div class="data-row" style="background:#e0e0e0;"><span class="data-label" style="font-weight:bold; font-size:16px;">33. Final Amount:</span> <span class="data-value highlight {{finalAmountClass}}" style="font-size:16px;">
+    {{[Final Amount]}}
+</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="owner-section">
+        34. Owner Name: {{[Owner Name]}}
+    </div>
+
+    {{#if remarksEn}}
+    <div style="margin-top: 20px; padding: 10px; border: 1px dashed #666; background: #f0f7ff; font-size: 13px;">
+        <strong style="text-transform: uppercase; color: #1e40af;">Remarks (English):</strong> {{remarksEn}}
+    </div>
+    {{/if}}
+
+    {{#if remarksHi}}
+        <div style="
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px dashed #666;
+            background: #fff7ed;
+            font-size: 13px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        ">
+            <strong style="color:#9a3412;">
+                टिप्पणियाँ:
+            </strong>
+            {{remarksHi}}
+        </div>
+        {{/if}}
+
+    <div class="footer">
+    </div>
+</body>
+</html>
