@@ -255,6 +255,8 @@ export const renderTemplate = async (type: 'TYPE_A' | 'TYPE_B', sanitizedData: a
 
 sanitizedData.FastagLabel = "Fastag Amount";
 
+console.log("Month value:", sanitizedData.Month);
+
 const monthStr = String(sanitizedData.Month || "");
 const match = monthStr.match(/^([A-Za-z]{3})-(\d{2})$/);
 
