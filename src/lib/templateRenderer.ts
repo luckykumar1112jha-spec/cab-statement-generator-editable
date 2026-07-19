@@ -280,20 +280,37 @@ if (match) {
   }
 }
   if (type === "TYPE_A") {
-  const qrData = `Cab No: ${sanitizedData["Cab No"]}`;
+  const qrData = `
+Invoice ID : ${sanitizedData["Month"]}-${sanitizedData["Cab No"]}
+Cab No     : ${sanitizedData["Cab No"]}
+Owner      : ${sanitizedData["Owner Name"]}
+Vehicle    : ${sanitizedData["Ertiga/Dzire/Tempo"]}
+Month      : ${sanitizedData["Month"]}
+Amount     : ₹${sanitizedData["Final Amount"]}
+Generated  : ${new Date().toLocaleString("en-IN")}
+`;
 
-  sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
-    width: 300,
-    margin: 2
-  });
-} else {
-  const qrData = `Cab No: ${sanitizedData["Cab No"]}`;
-
-  sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
+sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
     errorCorrectionLevel: "M",
-    margin: 4,
-    scale: 8
-  });
+    margin: 2,
+    width: 250
+});
+} else {
+  const qrData = `
+Invoice ID : ${sanitizedData["Month"]}-${sanitizedData["Cab No"]}
+Cab No     : ${sanitizedData["Cab No"]}
+Owner      : ${sanitizedData["Name"]}
+Vehicle    : ${sanitizedData["Cab Type"]}
+Month      : ${sanitizedData["Month"]}
+Amount     : ₹${sanitizedData["FINAL AMOUNT"]}
+Generated  : ${new Date().toLocaleString("en-IN")}
+`;
+
+sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
+    errorCorrectionLevel: "M",
+    margin: 2,
+    width: 250
+});
 }
 
   return template(sanitizedData);

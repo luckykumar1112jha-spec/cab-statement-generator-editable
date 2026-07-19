@@ -17,7 +17,7 @@
         
         /* Main layout container organizing route details & payment on left, expenses on right */
         .main-layout { display: flex; gap: 10px; align-items: flex-start; }
-        .left-column { flex: 2.2; display: flex; flex-direction: column; gap: 20px; }
+        .left-column { flex: 2.2; display: flex; flex-direction: column; gap: 0px; }
         .right-column { flex: 1; }
         
         .panel { border: 1px solid #000; margin-bottom: 10px; }
@@ -233,7 +233,7 @@
                     <div class="data-row"><span class="data-label">INSURANCE:</span> <span class="data-value">{{INSURANCE}}</span></div>
                     <div class="data-row"><span class="data-label">CASH:</span> <span class="data-value">{{CASH}}</span></div>
                     <div class="data-row"><span class="data-label">A/C PAY:</span> <span class="data-value">{{[A/C PAY]}}</span></div>
-                    <div class="data-row"><span class="data-label">CNG-CARD:</span> <span class="data-value">{{[CNG-CARD]}}</span></div>
+                    <div class="data-row"><span class="data-label">CNG-ACCOUNT:</span> <span class="data-value">{{[CNG-CARD]}}</span></div>
                     <div class="data-row"><span class="data-label">DOWN PYMT:</span> <span class="data-value">{{[DOWN PYMT]}}</span></div>
                     <div class="data-row"><span class="data-label">(ESI-PF):</span> <span class="data-value">{{[ESI-PF]}}</span></div>
                     <div class="data-row"><span class="data-label">Driver Salary:</span> <span class="data-value">{{[Driver Salary]}}</span></div>
@@ -242,8 +242,8 @@
                     <div class="data-row"><span class="data-label">Complance:</span> <span class="data-value">{{Complance}}</span></div>
                     <div class="data-row"><span class="data-label">GPS Rent:</span> <span class="data-value">{{[GPS Rent]}}</span></div>
                     <div class="data-row"><span class="data-label">HR TAX:</span> <span class="data-value">{{[HR TAX]}}</span></div>
-                    <div class="data-row"><span class="data-label">MCD/Tax Recovery:</span> <span class="data-value">{{[MCD_Tax_Recovery]}}</span></div>
-                    <div class="data-row" style="background:#eee;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
+                    <div class="data-row"><span class="data-label">MCD/FASTAG/UP Tax Recovery:</span> <span class="data-value">{{[MCD_Tax_Recovery]}}</span></div>
+                    <div class="data-row" style="background:#b7ffc2;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
                     <div class="data-row"><span class="data-label">Gross Total:</span> <span class="data-value {{grossAmountClass}}"> {{[Gross Amount]}} </span></div>
                     <div class="data-row"><span class="data-label">Prev. Minus/plus:</span> <span class="data-value {{previousMinusClass}}"> {{[Previous Minus/plus]}} </span></div>
                     <div class="data-row" style="background:#ffff00; font-weight:bold; font-size:15px;">
@@ -280,13 +280,26 @@
         {{/if}}
 
         {{#if remarksHi}}
-        <div style="margin-top: 10px; padding: 10px; border: 1px dashed #666; background: #fff7ed; font-size: 13px; font-family: 'Noto Sans Devanagari', sans-serif;">
-            <strong style="color:#9a3412;">टिप्पणियाँ:</strong> {{remarksHi}}
+        <div style="
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px dashed #666;
+            background: #fff7ed;
+            font-size: 13px;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        ">
+            <strong style="color:#9a3412;">
+                टिप्पणियाँ:
+            </strong>
+            {{remarksHi}}
+        </div>
         </div>
         {{/if}}
     </div>
+    
     <div style="text-align:center; margin-top:20px;">
         <img src="{{QRCode}}" width="180" height="180" alt="QR Code">
     </div>
+
 </body>
 </html>

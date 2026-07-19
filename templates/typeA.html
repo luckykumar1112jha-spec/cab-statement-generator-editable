@@ -6,20 +6,20 @@
         body { 
             font-family: 'Arial', 'Noto Sans Devanagari', sans-serif; 
             margin: 0; 
-            padding: 20px; 
+            padding: 10px; 
             color: #000; 
-            font-size: 14px; /* Increased font size */
-            line-height: 1.5;
+            font-size: 12px; /* Increased font size */
+            line-height: 1.2;
         }
         .header { 
             text-align: center; 
-            margin-bottom: 20px; 
+            margin-bottom: 12px; 
             border-bottom: 3px solid #000; 
-            padding-bottom: 10px;
+            padding-bottom: 7px;
         }
         .header h1 { 
             margin: 0; 
-            font-size: 28px; 
+            font-size: 22px; 
             letter-spacing: 2px;
         }
         
@@ -28,17 +28,17 @@
         .top-info { 
             display: flex; 
             justify-content: space-between; 
-            margin-bottom: 20px; 
+            margin-bottom: 10px; 
             font-weight: bold; 
-            font-size: 16px;
+            font-size: 13px;
             background: #f9f9f9;
-            padding: 10px;
+            padding: 6px 10px;
             border: 1px solid #ddd;
         }
         
         .two-panel-container {
             display: flex;
-            gap: 20px;
+            gap: 10px;
             align-items: flex-start;
         }
         
@@ -50,11 +50,11 @@
         .panel-title {
             background: #333;
             color: #fff;
-            padding: 8px 12px;
+            padding: 5px 8px;
             font-weight: bold;
             text-transform: uppercase;
             text-align: center;
-            font-size: 15px;
+            font-size: 12px;
         }
         
         .data-list {
@@ -66,7 +66,7 @@
         .data-row {
             display: flex;
             justify-content: space-between;
-            padding: 8px 12px;
+            padding: 4px 8px;
             border-bottom: 1px solid #eee;
         }
         
@@ -126,7 +126,7 @@
         <h1>INVOICE</h1>
     </div>
 
-    <div class="top-info">
+    <div class="top-info" style="background: #9a3412; color: #eee;">
         <div>Month: {{Month}}</div>
         <div>Cab No: {{[Cab No]}}</div>
         <div>S No: {{[S No]}}</div>
@@ -150,7 +150,7 @@
                 <div class="data-row"><span class="data-label">11. Taxi Duty Amt:</span> <span class="data-value">{{[Add Taxi Duty Amt.]}}</span></div>
                 <div class="data-row"><span class="data-label">12. G. Total:</span> <span class="data-value">{{[G. Total]}}</span></div>
                 <div class="data-row"><span class="data-label">13. 1% TDS:</span> <span class="data-value">{{[1% TDS]}}</span></div>
-                <div class="data-row" style="background:#f2f2f2;"><span class="data-label" style="font-weight:bold;">14. Total Amount:</span> <span class="data-value highlight">{{[Total Amount]}}</span></div>
+                <div class="data-row" style="background:#ffff00;"><span class="data-label" style="font-weight:bold; background-color: #ffff00;">14. Total Amount:</span> <span class="data-value highlight">{{[Total Amount]}}</span></div>
             </div>
         </div>
 
@@ -176,7 +176,7 @@
                 <div class="data-row" style="background:#f2f2f2;"><span class="data-label" style="font-weight:bold;">30. Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
                 <div class="data-row"><span class="data-label">31. G,Total:</span> <span class="data-value">{{[G,Total]}}</span></div>
                 <div class="data-row"><span class="data-label">32. Previous Minus:</span> <span class="data-value">{{[Previous Minus]}}</span></div>
-                <div class="data-row" style="background:#e0e0e0;"><span class="data-label" style="font-weight:bold; font-size:16px;">33. Final Amount:</span> <span class="data-value highlight {{finalAmountClass}}" style="font-size:16px;">
+                <div class="data-row" style="background:#ffff00;"><span class="data-label" style="font-weight:bold; font-size:16px;">33. Final Amount:</span> <span class="data-value highlight {{finalAmountClass}}" style="font-size:16px;">
     {{[Final Amount]}}
 </span></div>
             </div>
@@ -212,7 +212,9 @@
     <div class="footer">
     </div>
 
-    
+    <div style="text-align:center; margin-top:20px;">
+        <img src="{{QRCode}}" width="180" height="180" alt="QR Code">
+    </div>
 
 </body>
 </html>
