@@ -2,6 +2,7 @@ import Handlebars from 'handlebars';
 import fs from 'fs-extra';
 import path from 'path';
 import { CONFIG } from './config';
+import QRCode from "qrcode";
 
 const normalize = (str: string) => str.toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -277,6 +278,27 @@ if (match) {
     sanitizedData.FastagLabel =
       `Fastag Amount (${monthMap[index]}-${String(year).padStart(2, "0")})`;
   }
+}
+  if (type === "TYPE_A") {
+  const qrData = JSON.stringify({
+    type: "TYPE_A",
+    cabNo: sanitizedData["Cab No"],
+    owner: sanitizedData["Owner Name"],
+    month: sanitizedData["Month"],
+    finalAmount: sanitizedData["Final Amount"]
+  });
+
+  sanitizedData.QRCode = await QRCode.toDataURL(qrData);
+} else {
+  const qrData = JSON.stringify({
+    type: "TYPE_B",
+    cabNo: sanitizedData["Cab No"],
+    owner: sanitizedData["Name"],
+    month: sanitizedData["Month"],
+    finalAmount: sanitizedData["FINAL AMOUNT"]
+  });
+
+  sanitizedData.QRCode = await QRCode.toDataURL(qrData);
 }
 
   return template(sanitizedData);
