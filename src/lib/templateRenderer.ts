@@ -280,25 +280,20 @@ if (match) {
   }
 }
   if (type === "TYPE_A") {
-  const qrData = JSON.stringify({
-    type: "TYPE_A",
-    cabNo: sanitizedData["Cab No"],
-    owner: sanitizedData["Owner Name"],
-    month: sanitizedData["Month"],
-    finalAmount: sanitizedData["Final Amount"]
-  });
+  const qrData = `Cab No: ${sanitizedData["Cab No"]}`;
 
-  sanitizedData.QRCode = await QRCode.toDataURL(qrData);
+  sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
+    width: 300,
+    margin: 2
+  });
 } else {
-  const qrData = JSON.stringify({
-    type: "TYPE_B",
-    cabNo: sanitizedData["Cab No"],
-    owner: sanitizedData["Name"],
-    month: sanitizedData["Month"],
-    finalAmount: sanitizedData["FINAL AMOUNT"]
-  });
+  const qrData = `Cab No: ${sanitizedData["Cab No"]}`;
 
-  sanitizedData.QRCode = await QRCode.toDataURL(qrData);
+  sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
+    errorCorrectionLevel: "M",
+    margin: 4,
+    scale: 8
+  });
 }
 
   return template(sanitizedData);
