@@ -248,5 +248,36 @@ export const renderTemplate = async (type: 'TYPE_A' | 'TYPE_B', sanitizedData: a
     sanitizedData["FINAL AMOUNT"]
   ) < 0 ? "negative" : "";
 
+  const monthMap = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
+sanitizedData.FastagLabel = "Fastag Amount";
+
+const monthStr = String(sanitizedData.Month || "");
+const match = monthStr.match(/^([A-Za-z]{3})-(\d{2})$/);
+
+if (match) {
+  const currentMonth = match[1];
+  let year = parseInt(match[2], 10);
+
+  let index = monthMap.indexOf(currentMonth);
+
+  if (index !== -1) {
+    index++;
+
+    if (index === 12) {
+      index = 0;
+      year++;
+    }
+
+    sanitizedData.FastagLabel =
+      `Fastag Amount (${monthMap[index]}-${String(year).padStart(2, "0")})`;
+  }
+}
+
   return template(sanitizedData);
+  
 };
+

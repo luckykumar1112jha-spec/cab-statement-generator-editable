@@ -45,7 +45,7 @@
         <h1>INVOICE</h1>
     </div>
 
-    <div class="top-info">
+    <div class="top-info" style="background-color: #9a3412; color: #f0f7ff;">
         <div>Month: {{Month}}</div>
         <div>Vehicle Type: {{[Cab Type]}}</div>
         <div>Cab No: {{[Cab No]}}</div>
@@ -212,7 +212,7 @@
                         <span class="data-value">{{Hartron}}</span>
                     </div>
 
-                    <div class="data-row"><span class="data-label">Fastag Amt:</span> <span class="data-value">{{[Fastag Amt]}}</span></div>
+                    <div class="data-row"> <span class="data-label">{{FastagLabel}}:</span> <span class="data-value">{{[Fastag Amt]}}</span> </div>
                     <div class="data-row"><span class="data-label">Gross Amount:</span> <span class="data-value">{{[Total Amount]}}</span></div>
                     <div class="data-row"><span class="data-label">TDS 1%:</span> <span class="data-value">{{[TDS 1%]}}</span></div>
                     <div class="data-row" style="background:#ffff00; font-weight:bold;"><span class="data-label">Total Amount</span> <span class="data-value {{totalAfterTdsClass}}"> {{[Total Amount After TDS]}}</span></div>
