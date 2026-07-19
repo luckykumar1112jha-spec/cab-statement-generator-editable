@@ -43,6 +43,14 @@ export interface TypeBData {
   "Shuttle Cab Amount": number;
   "Guard Trips": number;
   "Guard Amount": number;
+  "Cyber Guard Trips"?: number;
+  "Cyber Guard Amount"?: number;
+
+  "G_T"?: number;
+  "GTM"?: number;
+
+  "CyberCity_Sum_Trip"?: number;
+  "CyberCity_Sum_Amt"?: number;
   "Amex Amount": number;
   "Fastag Amount": number;
   "Jaquar Payment": number;

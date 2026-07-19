@@ -56,8 +56,79 @@ export async function POST(req: NextRequest) {
             });
             
             // Override summary fields if they exist in campus sheet
-            if (cleanCampus['74-A Amex Trips']) cleanData['74-A Amex Trips'] = cleanCampus['74-A Amex Trips'];
-            if (cleanCampus['74-A Company Amount']) cleanData['74-A Company Amount'] = cleanCampus['74-A Company Amount'];
+            // ===============================
+            // Route Totals
+            // ===============================
+
+            // Campus Total (Top)
+            cleanData["74-A Amex Trips"] =
+              Number(cleanData.C_DLI_FRONT_TRIP || 0) +
+              Number(cleanData.C_DLI_B2B_TRIP || 0) +
+              Number(cleanData.C_FBD_FRONT_TRIP || 0) +
+              Number(cleanData.C_FBD_B2B_TRIP || 0) +
+              Number(cleanData.C_GGN_FRONT_TRIP || 0) +
+              Number(cleanData.C_GGN_B2B_TRIP || 0) +
+              Number(cleanData.C_NOIDA_FRONT_TRIP || 0) +
+              Number(cleanData.C_NOIDA_B2B_TRIP || 0) +
+              Number(cleanData.C_GZB_FRONT_TRIP || 0) +
+              Number(cleanData.C_GZB_B2B_TRIP || 0);
+
+            cleanData["74-A Company Amount"] =
+              Number(cleanData.C_DLI_FRONT_AMT || 0) +
+              Number(cleanData.C_DLI_B2B_AMT || 0) +
+              Number(cleanData.C_FBD_FRONT_AMT || 0) +
+              Number(cleanData.C_FBD_B2B_AMT || 0) +
+              Number(cleanData.C_GGN_FRONT_AMT || 0) +
+              Number(cleanData.C_GGN_B2B_AMT || 0) +
+              Number(cleanData.C_NOIDA_FRONT_AMT || 0) +
+              Number(cleanData.C_NOIDA_B2B_AMT || 0) +
+              Number(cleanData.C_GZB_FRONT_AMT || 0) +
+              Number(cleanData.C_GZB_B2B_AMT || 0);
+
+            // CyberCity Total (Top)
+            cleanData.CyberCity_Sum_Trip =
+              Number(cleanData.DLI_FRONT_TRIP || 0) +
+              Number(cleanData.DLI_B2B_TRIP || 0) +
+              Number(cleanData.FBD_FRONT_TRIP || 0) +
+              Number(cleanData.FBD_B2B_TRIP || 0) +
+              Number(cleanData.GGN_FRONT_TRIP || 0) +
+              Number(cleanData.GGN_B2B_TRIP || 0) +
+              Number(cleanData.NOIDA_FRONT_TRIP || 0) +
+              Number(cleanData.NOIDA_B2B_TRIP || 0) +
+              Number(cleanData.GZB_FRONT_TRIP || 0) +
+              Number(cleanData.GZB_B2B_TRIP || 0);
+
+            cleanData.CyberCity_Sum_Amt =
+              Number(cleanData.DLI_FRONT_AMT || 0) +
+              Number(cleanData.DLI_B2B_AMT || 0) +
+              Number(cleanData.FBD_FRONT_AMT || 0) +
+              Number(cleanData.FBD_B2B_AMT || 0) +
+              Number(cleanData.GGN_FRONT_AMT || 0) +
+              Number(cleanData.GGN_B2B_AMT || 0) +
+              Number(cleanData.NOIDA_FRONT_AMT || 0) +
+              Number(cleanData.NOIDA_B2B_AMT || 0) +
+              Number(cleanData.GZB_FRONT_AMT || 0) +
+              Number(cleanData.GZB_B2B_AMT || 0);
+
+            // ===============================
+            // Bottom TOTAL Row
+            // ===============================
+
+            cleanData.Campus_Extra_Trip_Total =
+              Number(cleanData.C_EXTRA_GGN_TRIP || 0) +
+              Number(cleanData.C_EXTRA_DLI_FBD_GZB_TRIP || 0) +
+              Number(cleanData.C_GUARD_TRIP || 0);
+
+            cleanData.Campus_Extra_Amt_Total =
+              Number(cleanData.C_EXTRA_GGN_AMT || 0) +
+              Number(cleanData.C_EXTRA_DLI_FBD_GZB_AMT || 0) +
+              Number(cleanData.C_GUARD_AMT || 0);
+
+            cleanData.Cyber_Extra_Trip_Total =
+              Number(cleanData.G_T || 0);
+
+            cleanData.Cyber_Extra_Amt_Total =
+              Number(cleanData.GTM || 0);
           }
         }
 
