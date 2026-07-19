@@ -258,7 +258,7 @@ sanitizedData.FastagLabel = "Fastag Amount";
 console.log("Month value:", sanitizedData.Month);
 
 const monthStr = String(sanitizedData.Month || "");
-const match = monthStr.match(/^([A-Za-z]{3})-(\d{2})$/);
+const match = monthStr.match(/^([A-Za-z]{3})['-](\d{2})$/);
 
 if (match) {
   const currentMonth = match[1];
