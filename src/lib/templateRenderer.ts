@@ -124,9 +124,13 @@ export const sanitizeRecord = (data: any, type: 'TYPE_A' | 'TYPE_B') => {
     ];
 
     routes.forEach(r => {
-      // Index 0 for Trip, Index 1 for Amount
-      sanitized[`${r.key}_TRIP`] = numeric(getFuzzyValue(data, r.label, 0));
-      sanitized[`${r.key}_AMT`] = numeric(getFuzzyValue(data, r.label, 1));
+      const trip = getFuzzyValue(data, r.label, 0);
+      const amt = getFuzzyValue(data, r.label, 1);
+
+      console.log(`${r.label} -> Trip:`, trip, "Amount:", amt);
+
+      sanitized[`${r.key}_TRIP`] = numeric(trip);
+      sanitized[`${r.key}_AMT`] = numeric(amt);
     });
 
     const mappings: Record<string, string[]> = {
