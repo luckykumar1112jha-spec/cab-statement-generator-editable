@@ -118,13 +118,108 @@
             color: red !important;
             font-weight: bold;
         }
+
+        .watermark{
+            position: fixed;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 65%;
+
+            opacity: 0.1;
+
+            pointer-events: none;
+
+            z-index: 0;
+        }
+
+        body{
+            position: relative;
+        }
+
+        body>*{
+            position: relative;
+            z-index: 1;
+        }
+
+            .header{
+            display:flex;
+            align-items:center;
+
+            border-bottom:2px solid #000;
+
+            padding-bottom:8px;
+
+            margin-bottom:10px;
+        }
+
+        .logo-box{
+            width:120px;
+        }
+
+        .logo{
+            width:95px;
+            height:auto;
+        }
+
+        .company-box{
+            flex:1;
+            text-align:center;
+        }
+
+        .company-name{
+            font-size:28px;
+            font-weight:bold;
+        }
+
+        .company-tagline{
+            margin-top:4px;
+            font-size:15px;
+            letter-spacing:4px;
+        }
+
+        .company-info{
+            margin-top:10px;
+
+            display:flex;
+
+            justify-content:space-between;
+
+            font-size:12px;
+
+            font-weight:bold;
+        }
+
         
     </style>
 </head>
 <body>
+    <img src="{{Watermark}}" class="watermark" alt="Watermark">
+
     <div class="header">
-        <h1>INVOICE</h1>
+
+    <div class="logo-box">
+        <img src="{{Logo}}" class="logo">
     </div>
+
+    <div class="company-box">
+
+        <div class="company-name">
+            ADVANCETECH CABS PVT. LTD.
+        </div>
+
+        <div class="company-tagline">
+            TOTAL TRANSPORT SOLUTION
+        </div>
+
+        
+
+    </div>
+
+</div>
 
     <div class="top-info" style="background: #9a3412; color: #eee;">
         <div>Month: {{Month}}</div>

@@ -313,6 +313,36 @@ sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
 });
 }
 
+const watermarkPath = path.join(
+  process.cwd(),
+  "public",
+  "images",
+  "watermark.png"
+);
+
+const watermarkBase64 = await fs.readFile(watermarkPath, {
+  encoding: "base64",
+});
+
+sanitizedData.Watermark =
+  `data:image/png;base64,${watermarkBase64}`;
+
+console.log(sanitizedData.Watermark);
+
+const logoPath = path.join(
+  process.cwd(),
+  "public",
+  "images",
+  "logo.png"
+);
+
+const logoBase64 = await fs.readFile(logoPath, {
+  encoding: "base64",
+});
+
+sanitizedData.Logo =
+  `data:image/png;base64,${logoBase64}`;
+
   return template(sanitizedData);
   
 };
