@@ -110,6 +110,21 @@ export async function POST(req: NextRequest) {
               Number(cleanData.GZB_FRONT_AMT || 0) +
               Number(cleanData.GZB_B2B_AMT || 0);
 
+              // ===============================
+              // Total Trip / Amount (Campus + CyberCity)
+              // ===============================
+
+              cleanData.Total_Trip =
+                Number(cleanData["74-A Amex Trips"] || 0) +
+                Number(cleanData.CyberCity_Sum_Trip || 0);
+
+              cleanData.Total_Amt =
+                Number(cleanData["74-A Company Amount"] || 0) +
+                Number(cleanData.CyberCity_Sum_Amt || 0);
+
+              cleanData.totalTripAmtClass =
+                Number(cleanData.Total_Amt || 0) < 0 ? "negative" : "";
+
             // ===============================
             // Bottom TOTAL Row
             // ===============================
