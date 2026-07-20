@@ -139,9 +139,9 @@
 </div>
 
     <div class="top-info" style="background-color: #9a3412; color: #f0f7ff;">
-        <div>Month: {{Month}}</div>
-        <div>Vehicle Type: {{[Cab Type]}}</div>
-        <div>Cab No: {{[Cab No]}}</div>
+        <div style="font-size: 22px;">Month: {{Month}}</div>
+        <div style="font-size: 22px;">Vehicle Type: {{[Cab Type]}}</div>
+        <div style="font-size: 22px;">Cab No: {{[Cab No]}}</div>
     </div>
 
     <!-- Main Side-by-Side Dashboard Container -->
@@ -282,15 +282,15 @@
                             <td>{{GTM}}</td>
                         </tr>
                             <tr style="background:#fff8dc;font-weight:bold;">
-                            <td style="text-align:left;">TOTAL</td>
+                            <td style="text-align:left; font-size: 15px;">TOTAL</td>
 
                             <td>-</td>
-                            <td class="{{campusExtraAmtClass}}">
+                            <td class="{{campusExtraAmtClass}}" style="font-size: 15px;">
                                 {{Campus_Extra_Amt_Total}}
                             </td>
 
                             <td>-</td>
-                            <td class="{{cyberExtraAmtClass}}">
+                            <td class="{{cyberExtraAmtClass}}" style="font-size: 15px;">
                                 {{Cyber_Extra_Amt_Total}}
                             </td>
                         </tr>
@@ -317,9 +317,9 @@
                     </div>
 
                     <div class="data-row"> <span class="data-label">{{FastagLabel}}:</span> <span class="data-value">{{[Fastag Amt]}}</span> </div>
-                    <div class="data-row"><span class="data-label">Gross Amount:</span> <span class="data-value">{{[Total Amount]}}</span></div>
+                    <div class="data-row" style="font-size: 14px; font-weight: bolder; background: #fff8dc;"><span class="data-label">Gross Amount:</span> <span class="data-value">{{[Total Amount]}}</span></div>
                     <div class="data-row"><span class="data-label">TDS 1%:</span> <span class="data-value">{{[TDS 1%]}}</span></div>
-                    <div class="data-row" style="background:#ffff00; font-weight:bold;"><span class="data-label">Total Amount</span> <span class="data-value {{totalAfterTdsClass}}"> {{[Total Amount After TDS]}}</span></div>
+                    <div class="data-row" style="background:#ffff00; font-weight:bold; font-size: large;"><span class="data-label">Total Amount</span> <span class="data-value {{totalAfterTdsClass}}"> {{[Total Amount After TDS]}}</span></div>
                 </div>
             </div>
 
@@ -347,7 +347,7 @@
                     <div class="data-row"><span class="data-label">GPS Rent:</span> <span class="data-value">{{[GPS Rent]}}</span></div>
                     <div class="data-row"><span class="data-label">HR TAX:</span> <span class="data-value">{{[HR TAX]}}</span></div>
                     <div class="data-row"><span class="data-label">MCD/FASTAG/UP Tax Recovery:</span> <span class="data-value">{{[MCD_Tax_Recovery]}}</span></div>
-                    <div class="data-row" style="background:#b7ffc2;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
+                    <div class="data-row" style="background:#b7ffc2; font-size: 15px;"><span class="data-label">Total Expenses:</span> <span class="data-value">{{[Total Expencess]}}</span></div>
                     <div class="data-row"><span class="data-label">Gross Total:</span> <span class="data-value {{grossAmountClass}}"> {{[Gross Amount]}} </span></div>
                     <div class="data-row"><span class="data-label">Prev. Minus/plus:</span> <span class="data-value {{previousMinusClass}}"> {{[Previous Minus/plus]}} </span></div>
                     <div class="data-row" style="background:#ffff00; font-weight:bold; font-size:19px;">

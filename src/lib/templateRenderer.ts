@@ -313,35 +313,49 @@ sanitizedData.QRCode = await QRCode.toDataURL(qrData, {
 });
 }
 
+let watermarkFile = "";
+
+if (type === "TYPE_A") {
+    watermarkFile = "ats-watermark.png";
+} else {
+    watermarkFile = "watermark.png";
+}
+
 const watermarkPath = path.join(
-  process.cwd(),
-  "public",
-  "images",
-  "watermark.png"
+    process.cwd(),
+    "public",
+    "images",
+    watermarkFile
 );
 
 const watermarkBase64 = await fs.readFile(watermarkPath, {
-  encoding: "base64",
+    encoding: "base64",
 });
 
 sanitizedData.Watermark =
-  `data:image/png;base64,${watermarkBase64}`;
+    `data:image/png;base64,${watermarkBase64}`;
 
-console.log(sanitizedData.Watermark);
+let logoFile = "";
+
+if (type === "TYPE_A") {
+    logoFile = "ATS Logo.png";
+} else {
+    logoFile = "logo.png";
+}
 
 const logoPath = path.join(
-  process.cwd(),
-  "public",
-  "images",
-  "logo.png"
+    process.cwd(),
+    "public",
+    "images",
+    logoFile
 );
 
 const logoBase64 = await fs.readFile(logoPath, {
-  encoding: "base64",
+    encoding: "base64",
 });
 
 sanitizedData.Logo =
-  `data:image/png;base64,${logoBase64}`;
+    `data:image/png;base64,${logoBase64}`;
 
   return template(sanitizedData);
   
