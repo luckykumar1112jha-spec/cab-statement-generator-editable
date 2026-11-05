@@ -78,7 +78,9 @@ export const sanitizeRecord = (data: any, type: 'TYPE_A' | 'TYPE_B') => {
       'CNG CARD': ['CNG CARD'],
       'PETROL/CNG': ['PETROL/CNG'],
       'Maintenance': ['Maintenance'],
-      'Compliance': ['Compliance'],
+      // The Jaquar workbook uses the historical typo "Complance".
+      // Accept both spellings so the value is not lost during sanitization.
+      'Compliance': ['Compliance', 'Complance'],
       'ESI/PF': ['ESI/PF'],
       'Salary': ['Salary'],
       'Driver': ['Driver'],
